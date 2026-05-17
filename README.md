@@ -1,18 +1,30 @@
-# 🌍 Wanderers - Travel Destination REST API
+# 🌍 Wanderers - Travel Destination Management System
 
-A full-stack travel destination management app built with **Spring Boot**, **Spring REST**, **JDBC**, **MySQL**, and a **Bootstrap 5** frontend.
+A full-stack web application for managing and exploring travel destinations around the world. Built with **React.js**, **Node.js**, **Express**, and **MySQL**.
 
 ---
 
-## 🛠 Tech Stack
+## 📦 Tech Stack
 
-| Layer      | Technology              |
-|------------|-------------------------|
-| Backend    | Spring Boot 3.2.5       |
-| REST API   | Spring REST (Web MVC)   |
-| Database   | MySQL + Spring JDBC     |
-| Build Tool | Maven                   |
-| Frontend   | HTML5, CSS3, Bootstrap 5, JavaScript |
+| Layer      | Technology                |
+|------------|---------------------------|
+| Frontend   | React.js (Hooks, State)   |
+| Backend    | Node.js + Express         |
+| Database   | MySQL                     |
+| HTTP Client| Axios                     |
+
+---
+
+## 🚀 Features
+
+- ✅ Dynamic single-page application (SPA) with React
+- ✅ Full CRUD operations (Create, Read, Update, Delete)
+- ✅ Real-time state management with React Hooks
+- ✅ RESTful API endpoints with Express
+- ✅ Filter destinations by category
+- ✅ Star rating system
+- ✅ Responsive design
+- ✅ MySQL database with optimized queries
 
 ---
 
@@ -20,74 +32,106 @@ A full-stack travel destination management app built with **Spring Boot**, **Spr
 
 ```
 wanderers/
-├── src/
-│   ├── main/
-│   │   ├── java/com/wanderers/
-│   │   │   ├── WanderersApplication.java       # Entry point
-│   │   │   ├── controller/
-│   │   │   │   └── DestinationController.java  # REST endpoints
-│   │   │   ├── model/
-│   │   │   │   └── Destination.java            # Entity class
-│   │   │   ├── repository/
-│   │   │   │   └── DestinationRepository.java  # JDBC queries
-│   │   │   └── service/
-│   │   │       └── DestinationService.java     # Business logic
-│   │   └── resources/
-│   │       ├── application.properties          # DB config
-│   │       ├── schema.sql                      # Table creation
-│   │       ├── data.sql                        # Sample data
-│   │       └── static/
-│   │           └── index.html                  # Bootstrap frontend
-│   └── test/
-│       └── java/com/wanderers/
-│           └── WanderersApplicationTests.java
-└── pom.xml
+├── spring-boot-wanderers.zip     # Java Spring Boot version (alternative implementation)
+├── client/                       # React frontend
+│   ├── public/
+│   ├── src/
+│   │   ├── components/          # React components
+│   │   ├── services/            # API service layer
+│   │   └── App.js              # Main app component
+│   └── package.json
+├── server/                       # Node.js backend
+│   ├── config/                  # Database configuration
+│   ├── controllers/             # Business logic
+│   ├── routes/                  # API routes
+│   ├── database.sql            # SQL schema
+│   └── server.js               # Entry point
+└── package.json
 ```
 
 ---
 
-## ⚙️ Setup
+## ⚙️ Setup & Installation
 
-### 1. Configure MySQL
-Update `src/main/resources/application.properties`:
-```properties
-spring.datasource.url=jdbc:mysql://localhost:3306/wanderers_db
-spring.datasource.username=root
-spring.datasource.password=your_password_here
-```
-
-### 2. Run the App
+### 1. Clone the Repository
 ```bash
-mvn spring-boot:run
+git clone https://github.com/ManikandanM-7/Wanderers.git
+cd Wanderers
 ```
 
-### 3. Open in Browser
+### 2. Setup MySQL Database
+```bash
+# Login to MySQL
+mysql -u root -p
+
+# Run the schema
+source server/database.sql
 ```
-http://localhost:8080
+
+### 3. Configure Environment Variables
+Update `server/.env`:
+```env
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=your_password_here
+DB_NAME=wanderers_db
+PORT=5000
 ```
+
+### 4. Install Dependencies
+```bash
+# Install server dependencies
+cd server
+npm install
+
+# Install client dependencies
+cd ../client
+npm install
+```
+
+### 5. Run the Application
+
+**Option A - Run separately:**
+```bash
+# Terminal 1 - Start backend
+cd server
+npm start
+
+# Terminal 2 - Start frontend
+cd client
+npm start
+```
+
+**Option B - Run concurrently:**
+```bash
+npm run dev
+```
+
+Frontend: `http://localhost:3000`  
+Backend API: `http://localhost:5000`
 
 ---
 
-## 🔗 REST API Endpoints
+## 🔗 API Endpoints
 
 | Method | Endpoint                          | Description              |
 |--------|-----------------------------------|--------------------------|
 | GET    | `/api/destinations`               | Get all destinations     |
-| GET    | `/api/destinations/{id}`          | Get destination by ID    |
-| GET    | `/api/destinations/category/{cat}`| Filter by category       |
-| POST   | `/api/destinations`               | Add new destination      |
-| PUT    | `/api/destinations/{id}`          | Update destination       |
-| DELETE | `/api/destinations/{id}`          | Delete destination       |
+| GET    | `/api/destinations/:id`           | Get destination by ID    |
+| GET    | `/api/destinations/category/:cat` | Filter by category       |
+| POST   | `/api/destinations`               | Create new destination   |
+| PUT    | `/api/destinations/:id`           | Update destination       |
+| DELETE | `/api/destinations/:id`           | Delete destination       |
 
 ---
 
-## 📦 Sample Request (POST)
+## 📊 Sample API Request (POST)
 
 ```json
 {
   "name": "Santorini",
   "country": "Greece",
-  "description": "Beautiful island with white-washed buildings.",
+  "description": "Beautiful Greek island with white-washed buildings and blue-domed churches.",
   "category": "Beach",
   "rating": 4.9
 }
@@ -95,11 +139,37 @@ http://localhost:8080
 
 ---
 
-## 📸 Features
+## 🎨 Components Overview
 
-- ✅ Full CRUD via REST API
-- ✅ Filter destinations by category
-- ✅ Star ratings display
-- ✅ Bootstrap 5 responsive UI
-- ✅ Spring JDBC (no ORM)
-- ✅ Auto schema + seed data on startup
+- **App.js** - Main application with state management
+- **DestinationList** - Grid display of all destinations
+- **DestinationCard** - Individual destination card with edit/delete
+- **DestinationForm** - Form to add new destinations
+- **FilterBar** - Category filter buttons
+- **API Service** - Axios HTTP client for backend communication
+
+---
+
+## 🛠 Alternative: Spring Boot Version
+
+A Java Spring Boot implementation is also available:
+```bash
+unzip spring-boot-wanderers.zip
+cd spring-boot-wanderers
+mvn spring-boot:run
+```
+
+---
+
+## 👨‍💻 Developer
+
+**Manikandan Manickam**
+- 📧 mm0059745@gmail.com
+- 🔗 [LinkedIn](https://linkedin.com/in/Manikandan-M)
+- 💻 [GitHub](https://github.com/ManikandanM-7)
+
+---
+
+## 📝 License
+
+MIT License

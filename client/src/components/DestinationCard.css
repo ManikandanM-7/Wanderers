@@ -1,0 +1,140 @@
+.destination-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.destination-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.card-header h3 {
+  color: #667eea;
+  font-size: 1.4rem;
+  margin: 0;
+  flex: 1;
+}
+
+.category-badge {
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: white;
+}
+
+.category-badge.beach { background-color: #48dbfb; }
+.category-badge.mountain { background-color: #8e44ad; }
+.category-badge.city { background-color: #e74c3c; }
+.category-badge.historical { background-color: #f39c12; }
+.category-badge.adventure { background-color: #27ae60; }
+
+.country {
+  color: #666;
+  font-size: 1rem;
+  margin: 8px 0;
+}
+
+.description {
+  color: #555;
+  line-height: 1.6;
+  margin: 15px 0;
+  min-height: 60px;
+}
+
+.rating {
+  margin: 15px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.star {
+  color: #ddd;
+  font-size: 1.2rem;
+}
+
+.star.filled {
+  color: #f5a623;
+}
+
+.rating-value {
+  color: #666;
+  font-weight: 600;
+  margin-left: 5px;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  flex: 1;
+}
+
+.btn-edit {
+  background-color: #667eea;
+  color: white;
+}
+
+.btn-edit:hover {
+  background-color: #5568d3;
+}
+
+.btn-delete {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.btn-delete:hover {
+  background-color: #c0392b;
+}
+
+.btn-save {
+  background-color: #27ae60;
+  color: white;
+}
+
+.btn-cancel {
+  background-color: #95a5a6;
+  color: white;
+}
+
+/* Editing mode */
+.destination-card.editing {
+  background: #f8f9fa;
+}
+
+.destination-card.editing input,
+.destination-card.editing select,
+.destination-card.editing textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.destination-card.editing textarea {
+  resize: vertical;
+  font-family: inherit;
+}

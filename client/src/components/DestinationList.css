@@ -1,0 +1,12 @@
+.destination-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+}
+
+@media (max-width: 768px) {
+  .destination-list {
+    grid-template-columns: 1fr;
+  }
+}
